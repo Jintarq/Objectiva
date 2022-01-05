@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
+import React from "react";
+import { Routes, Route, Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import Overview from "./routes/Home";
+import MyTask from "./routes/MyTask";
+import CompletedTask from "./routes/CompletedTask";
+import AddTask from "./routes/AddTask";
+export default function App() {
+  const [todos, setTodos] = useState([]);
+  useEffect(() => {
+    setTodos(JSON.parse(localStorage.getItem("todos")));
+  }, []);
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos]);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Routes>
+        <Route path='/' element={<Overview todos={todos} />} />
+        <Route
+          path='/mytasks'
+          element={<MyTask todos={todos} setTodos={setTodos} />}
+        />
+        <Route path='/completed-tasks' element={<CompletedTask />} />
+        <Route
+          path='/add'
+          element={<AddTask setTodos={setTodos} todos={todos} />}
+        />
+      </Routes>
     </div>
   );
 }
-
-export default App;
