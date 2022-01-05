@@ -3,7 +3,6 @@ export default function MyTask({ todos, setTodos }) {
   const pageName = "mytasks";
   let i = 0;
   const handleDone = (item) => {
-    console.log(item.completed);
     setTodos(
       todos.map((todo) => {
         if (todo.id == item.id) {
