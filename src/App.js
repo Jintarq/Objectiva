@@ -8,19 +8,11 @@ import AddTask from "./routes/AddTask";
 export default function App() {
   const [todos, setTodos] = useState([]);
   useEffect(() => {
-    if (localStorage.getItem("todos") != null) {
-      setTodos(JSON.parse(localStorage.getItem("todos")));
-    } else {
-      setTodos([]);
-    }
-  }, []);
-  useEffect(() => {
-    if (todos != null) {
-      localStorage.setItem("todos", JSON.stringify(todos));
-    } else {
-      localStorage.setItem("todos", JSON.stringify([]));
-    }
+    localStorage.setItem("todos", JSON.stringify(todos));
   }, [todos]);
+  useEffect(() => {
+    setTodos(JSON.parse(localStorage.getItem("todos")));
+  }, []);
   return (
     <div>
       <Routes>
