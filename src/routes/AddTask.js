@@ -16,7 +16,6 @@ export default function AddTask({ setTodos, todos }) {
         id: Math.floor(Math.random() * 5025),
       },
     ]);
-    localStorage.setItem("todos", JSON.stringify(todos));
     setTodoText("");
   };
   const pageName = "add";

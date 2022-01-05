@@ -15,7 +15,11 @@ export default function App() {
     }
   }, []);
   useEffect(() => {
-    localStorage.setItem("todos", JSON.stringify(todos));
+    if (todos != null) {
+      localStorage.setItem("todos", JSON.stringify(todos));
+    } else {
+      localStorage.setItem("todos", JSON.stringify([]));
+    }
   }, [todos]);
   return (
     <div>
