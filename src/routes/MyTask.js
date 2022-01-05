@@ -3,16 +3,18 @@ export default function MyTask({ todos, setTodos }) {
   const pageName = "mytasks";
   let i = 0;
   const handleDone = (item) => {
-    setTodos(
-      todos.map((todo) => {
-        if (todo.id == item.id) {
-          return {
-            ...item,
-            completed: !item.completed,
-          };
-        }
-      })
-    );
+    if (todos != null) {
+      setTodos(
+        todos.map((todo) => {
+          if (todo.id == item.id) {
+            return {
+              ...item,
+              completed: !item.completed,
+            };
+          }
+        })
+      );
+    }
   };
 
   const handleDelete = (item) => {
