@@ -8,7 +8,11 @@ import AddTask from "./routes/AddTask";
 export default function App() {
   const [todos, setTodos] = useState([]);
   useEffect(() => {
-    setTodos(JSON.parse(localStorage.getItem("todos")));
+    if (localStorage.getItem("todos")) {
+      setTodos(JSON.parse(localStorage.getItem("todos")));
+    } else {
+      setTodos([]);
+    }
   }, []);
   useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(todos));

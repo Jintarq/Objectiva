@@ -14,7 +14,6 @@ export default function MyTask({ todos, setTodos }) {
         }
       })
     );
-    console.log(todos);
   };
 
   const handleDelete = (item) => {
