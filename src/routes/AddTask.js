@@ -1,5 +1,5 @@
 import Sidebar from "./components/Sidebar";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 export default function AddTask({ setTodos, todos }) {
   const [todoText, setTodoText] = useState("");
@@ -22,14 +22,16 @@ export default function AddTask({ setTodos, todos }) {
   return (
     <div className='flex flex-row '>
       <Sidebar pageName={pageName} />
-      <div className='flex flex-col mx-auto'>
-        <h1 className='text-4xl m-5'>Add a task</h1>
+      <div className='flex flex-col mx-auto text-center'>
+        <h1 className='text-5xl m-5 text-semibold'>Add a task</h1>
         <div className='mt-36'>
           <form onSubmit={handleSubmit} className='flex flex-col'>
             <div className='flex flex-col mb-5 mt-10'>
-              <label for='todotext'>Type the content of your task :</label>
-              <input
-                className='border-2 border-black mt-2 h-8'
+              <label htmlFor='todotext' className='text-2xl font-semibold'>
+                Type the content of your task :
+              </label>
+              <textarea
+                className='border-2 border-black mt-2 h-56 mb-5 w-96'
                 value={todoText}
                 type='text'
                 onChange={handleText}
@@ -41,7 +43,7 @@ export default function AddTask({ setTodos, todos }) {
 
             <input
               type='submit'
-              className='border-2 border-black rounded-xl'
+              className='border-2 border-black rounded-xl cursor-pointer'
               value='Send'
             />
           </form>

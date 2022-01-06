@@ -1,18 +1,16 @@
 import React from "react";
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Overview from "./routes/Home";
 import MyTask from "./routes/MyTask";
-import CompletedTask from "./routes/CompletedTask";
 import AddTask from "./routes/AddTask";
 export default function App() {
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState(
+    JSON.parse(localStorage.getItem("todos")) || []
+  );
   useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(todos));
   }, [todos]);
-  useEffect(() => {
-    setTodos(JSON.parse(localStorage.getItem("todos")));
-  }, []);
   return (
     <div>
       <Routes>
@@ -21,7 +19,6 @@ export default function App() {
           path='/mytasks'
           element={<MyTask todos={todos} setTodos={setTodos} />}
         />
-        <Route path='/completed-tasks' element={<CompletedTask />} />
         <Route
           path='/add'
           element={<AddTask setTodos={setTodos} todos={todos} />}

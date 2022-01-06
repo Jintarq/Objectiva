@@ -5,11 +5,13 @@ export default function MyTask({ todos, setTodos }) {
   const handleDone = (item) => {
     setTodos(
       todos.map((todo) => {
-        if (todo.id == item.id) {
+        if (todo.id === item.id) {
           return {
-            ...item,
+            ...todo,
             completed: !item.completed,
           };
+        } else {
+          return todo;
         }
       })
     );
@@ -35,6 +37,8 @@ export default function MyTask({ todos, setTodos }) {
           </div>
 
           {todos.map((todo) => {
+            console.log(todo.id);
+            console.log(todo.text);
             i++;
             return (
               <div key={todo.id} className='flex'>
