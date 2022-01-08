@@ -31,7 +31,7 @@ export default function AddTask({ setTodos, todos }) {
                 Type the content of your task :
               </label>
               <textarea
-                className='border-2 border-black mt-2 h-56 mb-5 w-96'
+                className='border border-black mt-2 h-56 mb-5 w-96 rounded-[15px]'
                 value={todoText}
                 type='text'
                 onChange={handleText}
@@ -43,7 +43,7 @@ export default function AddTask({ setTodos, todos }) {
 
             <input
               type='submit'
-              className='border-2 border-black rounded-xl cursor-pointer'
+              className='border border-black rounded-xl cursor-pointer font-semibold w-48 self-end'
               value='Send'
             />
           </form>

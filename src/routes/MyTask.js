@@ -29,7 +29,10 @@ export default function MyTask({ todos, setTodos }) {
             <h1 className='text-3xl border-b border-black w-full mb-2'>
               Here is your tasks :
             </h1>
-            <select id='selector' className='border border-black'>
+            <select
+              id='selector'
+              className='border border-black rounded-[15px] px-2'
+            >
               <option value=''>Select task's specification</option>
               <option value='completed'>Show completed</option>
               <option value='uncompleted'>Show uncompleted</option>

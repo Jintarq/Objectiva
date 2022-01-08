@@ -1,5 +1,8 @@
 import Sidebar from "./components/Sidebar";
 import { Link } from "react-router-dom";
+import Idea from "../assets/img/idea.svg";
+import Todo from "../assets/img/note.svg";
+import List from "../assets/img/list.svg";
 export default function Overview({ todos }) {
   const pageName = "overview";
   let remainingTasks = 0;
@@ -16,7 +19,7 @@ export default function Overview({ todos }) {
     }
   }
   if (remainingTasks > 0) {
-    achieve = Math.floor(completedTasks / remainingTasks) * 100;
+    achieve = Math.floor((completedTasks / remainingTasks) * 100);
   } else if (remainingTasks === 0 && completedTasks > 0) {
     achieve = completedTasks * 100;
   } else {
@@ -34,12 +37,15 @@ export default function Overview({ todos }) {
             <h1 className='text-2xl  w-80 text-center font-bold'>
               Ups... Didn't find task for today...
             </h1>
-            <p className='text-slate-500 font-bold text-2xl rotate-12 w-44 text-center pt-44 pb-12'>
-              Want to add an idea ?
-            </p>
+            <div className='ml-12'>
+              <img src={Idea} className='w-60 rotate-12' alt='Idea logo' />
+              <p className='text-slate-500 font-bold text-2xl rotate-12 w-44 mt-4 pb-12'>
+                Want to add an idea ?
+              </p>
+            </div>
             <Link to='/add'>
-              <p className='text-lg border border-black w-48 rounded-[18px] p-5 text-center bg-white'>
-                <span className='text-2xl'>+</span> Create an idea
+              <p className='text-lg border border-black w-48 rounded-[18px] p-4 text-center bg-white'>
+                <span className='text-2xl m-1'>+</span> Create an idea
               </p>
             </Link>
           </div>
@@ -48,14 +54,24 @@ export default function Overview({ todos }) {
               <h2 className='border-b border-black text-3xl p-4'>
                 Task summary
               </h2>
-              <div className='flex flex-row justify-between px-20 pt-6 pb-2'>
-                <div className='bg-violet-400 p-5 rounded-[24px] m-5'>
-                  <p className='text-center w-full pt-36 pb-2 text-[20px] font-semibold'>
+              <div className='flex flex-row justify-between mx-20 mt-6 mb-2'>
+                <div className='bg-violet-400 rounded-[24px] flex flex-col justify-center items-center p-4'>
+                  <img
+                    src={Todo}
+                    alt='Todo logo'
+                    className='w-32 mb-12 rounded-full border-4 border-black bg-white'
+                  />
+                  <p className='text-center w-full mb-2 text-[20px] font-semibold'>
                     Remaining tasks : {remainingTasks}
                   </p>
                 </div>
-                <div className='bg-green-600 p-5 rounded-[24px] m-5'>
-                  <p className='text-center w-full pt-36 pb-2 text-[20px] font-semibold'>
+                <div className='bg-green-600 rounded-[24px] flex flex-col justify-center items-center px-4'>
+                  <img
+                    src={List}
+                    alt='List logo'
+                    className='w-32 mb-12 rounded-full border-4 border-black bg-white'
+                  />
+                  <p className='text-center w-full mb-2 text-[20px] font-semibold'>
                     Completed tasks : {completedTasks}
                   </p>
                 </div>
