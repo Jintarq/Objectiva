@@ -19,7 +19,9 @@ export default function Overview({ todos }) {
     }
   }
   if (remainingTasks > 0) {
-    achieve = Math.floor((completedTasks / remainingTasks) * 100);
+    achieve = Math.floor(
+      (completedTasks / (remainingTasks + completedTasks)) * 100
+    );
   } else if (remainingTasks === 0 && completedTasks > 0) {
     achieve = completedTasks * 100;
   } else {
@@ -32,7 +34,7 @@ export default function Overview({ todos }) {
         <div className='w-full border-b border-black p-8 text-4xl'>
           <p className='font-semibold'>Dashboard</p>
         </div>
-        <div className='flex flex-row justify-center items-center my-auto justify-evenly'>
+        <div className='flex flex-row flex-wrap justify-center items-center my-auto justify-evenly'>
           <div className='p-4 pt-8 pb-10 flex flex-col justify-center items-center border rounded-[28px] bg-violet-400'>
             <h1 className='text-2xl  w-80 text-center font-bold'>
               Ups... Didn't find task for today...
@@ -49,43 +51,39 @@ export default function Overview({ todos }) {
               </p>
             </Link>
           </div>
-          <div>
-            <div className='border rounded-[24px] border-grey shadow-lg bg-stone-100'>
-              <h2 className='border-b border-black text-3xl p-4'>
-                Task summary
-              </h2>
-              <div className='flex flex-row justify-between mx-20 mt-6 mb-2'>
-                <div className='bg-violet-400 rounded-[24px] flex flex-col justify-center items-center p-4'>
-                  <img
-                    src={Todo}
-                    alt='Todo logo'
-                    className='w-32 mb-12 rounded-full border-4 border-black bg-white'
-                  />
-                  <p className='text-center w-full mb-2 text-[20px] font-semibold'>
-                    Remaining tasks : {remainingTasks}
-                  </p>
-                </div>
-                <div className='bg-green-600 rounded-[24px] flex flex-col justify-center items-center px-4'>
-                  <img
-                    src={List}
-                    alt='List logo'
-                    className='w-32 mb-12 rounded-full border-4 border-black bg-white'
-                  />
-                  <p className='text-center w-full mb-2 text-[20px] font-semibold'>
-                    Completed tasks : {completedTasks}
-                  </p>
-                </div>
-              </div>
-              <Link to='/mytasks'>
-                <p className='font-semibold text-lg text-center border border-black mx-40 my-8 p-4 rounded-[48px] cursor-pointer'>
-                  Consult your tasks !
+          <div className='flex flex-col lg:w-[690px] w-[450px] border border-grey shadow-lg bg-stone-100 rounded-[24px]'>
+            <h2 className='border-b border-black text-3xl p-4'>Task summary</h2>
+            <div className='flex flex-row mx-20 mt-6 mb-2 justify-center flex-wrap items-center lg:justify-between'>
+              <div className='bg-violet-400 rounded-[24px] flex flex-col justify-center items-center p-4'>
+                <img
+                  src={Todo}
+                  alt='Todo logo'
+                  className='w-32 mb-12 rounded-full border-4 border-black bg-white'
+                />
+                <p className='text-center w-full mb-2 text-[20px] font-semibold'>
+                  Remaining tasks : {remainingTasks}
                 </p>
-              </Link>
-
-              <p className='text-3xl border-t border-black p-4'>
-                You've done : {achieve}% of your tasks !
-              </p>
+              </div>
+              <div className='bg-green-600 rounded-[24px] flex flex-col justify-center items-center p-4'>
+                <img
+                  src={List}
+                  alt='List logo'
+                  className='w-32 mb-12 rounded-full border-4 border-black bg-white'
+                />
+                <p className='text-center w-full mb-2 text-[20px] font-semibold'>
+                  Completed tasks : {completedTasks}
+                </p>
+              </div>
             </div>
+            <Link to='/mytasks'>
+              <p className='font-semibold text-lg text-center border border-black mx-40 my-8 p-4 rounded-[48px] cursor-pointer'>
+                Consult your tasks !
+              </p>
+            </Link>
+
+            <p className='text-3xl border-t border-black p-4'>
+              You've done : {achieve}% of your tasks !
+            </p>
           </div>
         </div>
       </div>
