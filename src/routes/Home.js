@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Idea from "../assets/img/idea.svg";
 import Todo from "../assets/img/note.svg";
 import List from "../assets/img/list.svg";
-export default function Overview({ todos }) {
+export default function Overview({ todos, todosToday }) {
   const pageName = "overview";
   let remainingTasks = 0;
   let completedTasks = 0;
@@ -27,6 +27,48 @@ export default function Overview({ todos }) {
   } else {
     achieve = 0;
   }
+  const NoTask = () => {
+    return (
+      <div className='flex flex-col justify-center items-center'>
+        <h1 className='text-2xl  w-80 text-center font-bold'>
+          Ups... Didn't find task for today...
+        </h1>
+        <div className='ml-12'>
+          <img src={Idea} className='w-60 rotate-12' alt='Idea logo' />
+          <p className='text-slate-500 font-bold text-2xl rotate-12 w-44 mt-4 pb-12'>
+            Want to add an idea ?
+          </p>
+        </div>
+        <Link to='/add'>
+          <p className='text-lg border border-black w-48 rounded-[18px] p-4 text-center bg-white'>
+            <span className='text-2xl m-1'>+</span> Create an idea
+          </p>
+        </Link>
+      </div>
+    );
+  };
+  const TasksOfToday = () => {
+    return (
+      <div className='flex flex-col justify-center items-center h-full max-w-md'>
+        <h1 className='text-2xl text-center font-bold'>
+          Here is your today's tasks :
+        </h1>
+        <ul className='m-8'>
+          {todosToday.map((todo) => (
+            <li className='text-center text-lg m-6' key={todo.id}>
+              {todo.text}
+            </li>
+          ))}
+        </ul>
+        <Link to='/mytasks'>
+          <p className='text-lg border border-black w-48 rounded-[18px] p-4 text-center bg-white'>
+            Consult others tasks
+          </p>
+        </Link>
+      </div>
+    );
+  };
+  console.log(todosToday);
   return (
     <div className='flex flex-row w-full h-full'>
       <Sidebar pageName={pageName} />
@@ -35,21 +77,12 @@ export default function Overview({ todos }) {
           <p className='font-semibold'>Dashboard</p>
         </div>
         <div className='flex flex-row flex-wrap justify-center items-center my-auto justify-evenly'>
-          <div className='p-4 pt-8 pb-10 flex flex-col justify-center items-center border rounded-[28px] bg-violet-400'>
-            <h1 className='text-2xl  w-80 text-center font-bold'>
-              Ups... Didn't find task for today...
-            </h1>
-            <div className='ml-12'>
-              <img src={Idea} className='w-60 rotate-12' alt='Idea logo' />
-              <p className='text-slate-500 font-bold text-2xl rotate-12 w-44 mt-4 pb-12'>
-                Want to add an idea ?
-              </p>
-            </div>
-            <Link to='/add'>
-              <p className='text-lg border border-black w-48 rounded-[18px] p-4 text-center bg-white'>
-                <span className='text-2xl m-1'>+</span> Create an idea
-              </p>
-            </Link>
+          <div className='p-4 pt-8 pb-10 border rounded-[28px] bg-violet-400 m-4'>
+            {todosToday === null || todosToday.length === 0 ? (
+              <NoTask />
+            ) : (
+              <TasksOfToday />
+            )}
           </div>
           <div className='flex flex-col lg:w-[690px] w-[450px] border border-grey shadow-lg bg-stone-100 rounded-[24px]'>
             <h2 className='border-b border-black text-3xl p-4'>Task summary</h2>

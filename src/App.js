@@ -8,13 +8,29 @@ export default function App() {
   const [todos, setTodos] = useState(
     JSON.parse(localStorage.getItem("todos")) || []
   );
+  const [todosToday, setTodosToday] = useState([]);
   useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos]);
+  // setTodosToday()
+
+  useEffect(() => {
+    setTodosToday(
+      todos.filter(
+        (todo) =>
+          todo.year === new Date().getFullYear() &&
+          todo.month === new Date().getMonth() &&
+          todo.day === new Date().getDay()
+      )
+    );
   }, [todos]);
   return (
     <div>
       <Routes>
-        <Route path='/' element={<Overview todos={todos} />} />
+        <Route
+          path='/'
+          element={<Overview todos={todos} todosToday={todosToday} />}
+        />
         <Route
           path='/mytasks'
           element={<MyTask todos={todos} setTodos={setTodos} />}

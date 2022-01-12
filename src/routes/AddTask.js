@@ -14,6 +14,9 @@ export default function AddTask({ setTodos, todos }) {
         text: todoText,
         completed: false,
         id: Math.floor(Math.random() * 5025),
+        year: new Date().getFullYear(),
+        month: new Date().getMonth(),
+        day: new Date().getDay(),
       },
     ]);
     setTodoText("");
