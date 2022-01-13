@@ -28,19 +28,24 @@ export default function AddTask({ setTodos, todos, themes }) {
   };
   const pageName = "add";
   return (
-    <div className='flex flex-row '>
+    <div className='flex flex-row w-full h-full'>
       <Sidebar pageName={pageName} />
-      <div className='flex flex-col mx-auto text-center'>
-        <h1 className='text-5xl m-5 text-semibold'>Add a task</h1>
-        <div className='mt-36'>
-          <form onSubmit={handleSubmit} className='flex flex-row items-start'>
+      <div className='flex flex-col mx-auto w-full'>
+        <div className='w-full border-b border-black p-8 text-4xl text-slate-200 bg-[#20212C]'>
+          <p className='font-bold'>Add task</p>
+        </div>
+        <div className='flex flex-col text-slate-200 items-center bg-[#17181F] h-full w-full'>
+          <form
+            onSubmit={handleSubmit}
+            className='flex flex-row items-start bg-[#20212C] m-4 p-4 rounded-[12px]'
+          >
             <div className='flex flex-row mb-5 mt-10'>
               <div className='flex flex-col'>
                 <label htmlFor='todotext' className='text-2xl font-semibold'>
                   Type the content of your task
                 </label>
                 <textarea
-                  className='border border-black mt-2 ml-2 h-[100px] mb-5 w-[400px] rounded-[10px]'
+                  className='mt-2 ml-2 h-[100px] mb-5 w-[400px] rounded-[4px] text-black focus:outline-0'
                   value={todoText}
                   type='text'
                   onChange={handleText}
@@ -50,7 +55,7 @@ export default function AddTask({ setTodos, todos, themes }) {
                 />
                 <input
                   type='submit'
-                  className='border border-black rounded-[8px] cursor-pointer font-semibold w-48 self-end'
+                  className='border border-white rounded-[8px] cursor-pointer font-semibold w-48 self-end'
                   value='Send'
                 />
               </div>
@@ -61,7 +66,7 @@ export default function AddTask({ setTodos, todos, themes }) {
                 <select
                   onChange={handleTheme}
                   name='themes'
-                  className='border border-black text-xl'
+                  className='border border-black text-xl text-black'
                   required
                 >
                   <option value=''>Select theme</option>

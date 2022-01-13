@@ -55,8 +55,11 @@ export default function Overview({ todos, todosToday }) {
         </h1>
         <ul className='m-8'>
           {todosToday.map((todo) => (
-            <li className='text-center text-lg m-6' key={todo.id}>
-              <span className='border-r border-black font-semibold mr-2 pr-2'>
+            <li
+              className='text-center text-lg m-6 text-slate-200'
+              key={todo.id}
+            >
+              <span className='border-r border-black font-semibold mr-2 pr-2 text-black'>
                 {todo.theme}
               </span>
               {todo.text}
@@ -76,21 +79,21 @@ export default function Overview({ todos, todosToday }) {
     <div className='flex flex-row w-full h-full'>
       <Sidebar pageName={pageName} />
       <div className='w-full flex flex-col'>
-        <div className='w-full border-b border-black p-8 text-4xl'>
+        <div className='w-full border-b border-black p-8 text-4xl text-slate-200 bg-[#20212C]'>
           <p className='font-semibold'>Dashboard</p>
         </div>
-        <div className='flex flex-row flex-wrap justify-center items-center my-auto justify-evenly'>
-          <div className='p-4 pt-8 pb-10 border rounded-[28px] bg-violet-400 m-4'>
+        <div className='flex flex-row flex-wrap justify-center items-center my-auto justify-evenly h-full bg-[#17181F]'>
+          <div className='p-4 pt-8 pb-10 rounded-[28px] bg-violet-700 m-4'>
             {todosToday === null || todosToday.length === 0 ? (
               <NoTask />
             ) : (
               <TasksOfToday />
             )}
           </div>
-          <div className='flex flex-col lg:w-[690px] w-[450px] border border-grey shadow-lg bg-purple-400 rounded-[24px]'>
+          <div className='flex flex-col lg:w-[690px] w-[450px] shadow-lg bg-purple-900 rounded-[24px]'>
             <h2 className='border-b border-black text-3xl p-4'>Task summary</h2>
             <div className='flex flex-row mx-20 mt-6 mb-2 justify-center flex-wrap items-center lg:justify-between'>
-              <div className='bg-violet-400 rounded-[24px] flex flex-col justify-center items-center p-4'>
+              <div className='bg-violet-600 rounded-[24px] flex flex-col justify-center items-center p-4'>
                 <img
                   src={Todo}
                   alt='Todo logo'
@@ -100,7 +103,7 @@ export default function Overview({ todos, todosToday }) {
                   Remaining tasks : {remainingTasks}
                 </p>
               </div>
-              <div className='bg-green-600 rounded-[24px] flex flex-col justify-center items-center p-4'>
+              <div className='bg-green-700 rounded-[24px] flex flex-col justify-center items-center p-4'>
                 <img
                   src={List}
                   alt='List logo'

@@ -10,7 +10,7 @@
 }
 
 .active {
-  background-color: rgb(6 182 212);
+  background-color: #272833;
   border-radius: 5px;
-  color: black;
+  color: rgb(226 232 240);
 }
