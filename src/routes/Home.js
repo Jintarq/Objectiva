@@ -56,6 +56,9 @@ export default function Overview({ todos, todosToday }) {
         <ul className='m-8'>
           {todosToday.map((todo) => (
             <li className='text-center text-lg m-6' key={todo.id}>
+              <span className='border-r border-black font-semibold mr-2 pr-2'>
+                {todo.theme}
+              </span>
               {todo.text}
             </li>
           ))}
@@ -84,7 +87,7 @@ export default function Overview({ todos, todosToday }) {
               <TasksOfToday />
             )}
           </div>
-          <div className='flex flex-col lg:w-[690px] w-[450px] border border-grey shadow-lg bg-stone-100 rounded-[24px]'>
+          <div className='flex flex-col lg:w-[690px] w-[450px] border border-grey shadow-lg bg-purple-400 rounded-[24px]'>
             <h2 className='border-b border-black text-3xl p-4'>Task summary</h2>
             <div className='flex flex-row mx-20 mt-6 mb-2 justify-center flex-wrap items-center lg:justify-between'>
               <div className='bg-violet-400 rounded-[24px] flex flex-col justify-center items-center p-4'>
@@ -109,7 +112,7 @@ export default function Overview({ todos, todosToday }) {
               </div>
             </div>
             <Link to='/mytasks'>
-              <p className='font-semibold text-lg text-center border border-black mx-40 my-8 p-4 rounded-[48px] cursor-pointer'>
+              <p className='font-semibold text-lg text-center bg-white border border-black mx-40 my-8 p-4 rounded-[48px] cursor-pointer'>
                 Consult your tasks !
               </p>
             </Link>

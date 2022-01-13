@@ -47,6 +47,16 @@ export default function Sidebar({ pageName = "overview" }) {
                 <p className='lg:block hidden'>Add task</p>
               </li>
             </Link>
+            <Link to='/addtheme'>
+              <li
+                className={`${defaultLi} ${
+                  className === "addtheme" ? "active" : ""
+                }`}
+              >
+                <img src={Plus} className='lg:w-10 w-8' alt='Plus logo' />
+                <p className='lg:block hidden'>Add theme</p>
+              </li>
+            </Link>
           </div>
         </ul>
       </div>
